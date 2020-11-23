@@ -25,9 +25,9 @@ py2 = -1;
 cx = 50;
 cy = 50;
 % TIME STEP
-dt = 0.5;
+dt = 0.501;
 % ITERATIONS
-itr = 200;
+itr = 1000;
 % USED FOR PLOTTING PURPOSES
 X1 = zeros([itr,1]);
 Y1 = zeros([itr,1]);
@@ -87,7 +87,7 @@ end
 plot(X2,-Y2);
 
 % EXPORT VALUES
-csvwrite('C:\Users\geekSA67\code\CS374_Labs\Project\X1.csv',X1)
-csvwrite('C:\Users\geekSA67\code\CS374_Labs\Project\Y1.csv',Y1) 
-csvwrite('C:\Users\geekSA67\code\CS374_Labs\Project\A1.csv',A1) 
+csvwrite('C:\Users\geekSA67\code\CS374_Labs\Project\X2_2.csv',X2)
+csvwrite('C:\Users\geekSA67\code\CS374_Labs\Project\Y2_2.csv',Y2) 
+%csvwrite('C:\Users\geekSA67\code\CS374_Labs\Project\A1.csv',A1) 
   
