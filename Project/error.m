@@ -16,3 +16,4 @@ for i = 1:length(X2_1)
 end
 
 plot(err);
+grid on;

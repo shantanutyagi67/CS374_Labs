@@ -27,7 +27,7 @@ cy = 50;
 % TIME STEP
 dt = 0.501;
 % ITERATIONS
-itr = 1000;
+itr = 2000;
 % USED FOR PLOTTING PURPOSES
 X1 = zeros([itr,1]);
 Y1 = zeros([itr,1]);
@@ -85,7 +85,7 @@ end
 
 % PLOT FOR FINAL POSITION OF SECOND BOB
 plot(X2,-Y2);
-
+grid on;
 % EXPORT VALUES
 csvwrite('C:\Users\geekSA67\code\CS374_Labs\Project\X2_2.csv',X2)
 csvwrite('C:\Users\geekSA67\code\CS374_Labs\Project\Y2_2.csv',Y2) 
