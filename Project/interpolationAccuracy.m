@@ -36,6 +36,9 @@ X2 = zeros([itr,1]);
 Y2 = zeros([itr,1]);
 A2 = zeros([itr,1]);
 
+X1_interpol = csvread('C:\Users\geekSA67\code\CS374_Labs\Project\X1_100.csv');
+Y1_interpol = csvread('C:\Users\geekSA67\code\CS374_Labs\Project\Y1_100.csv');
+
 % START LOOPING
 for i = 1:itr
     % SIMPLIFYING USING FORCE BALANCE EQUATION AND WRITING EVERYTHING IN TERMS OF THETA
@@ -56,20 +59,28 @@ for i = 1:itr
     % NEW ANGLAR ACCELERATION OF BOB 2
     a2_a = (num1 * (num2 + num3 + num4)) / den;
     
-    % CURRENT POSITION OF BOB 1
-    x1 = r1 * sin(a1);
-    y1 = r1 * cos(a1);
-    % CURRENT POSITION OF BOB 2
+    % INTERPOLATED VALUE FOR BOB 1
+    x1 = X1_interpol(i);
+    y1 = Y1_interpol(i);
+    % PREDICTED VALUE OF BOB 2
     x2 = x1 + r2 * sin(a2);
     y2 = y1 + r2 * cos(a2);
     
-    % INSERT VALUES OF VARIABLES TO BE PLOTTED
+    % INSERT PREDICTED VALUES OF VARIABLES TO BE PLOTTED
     X1(i) = x1;
     Y1(i) = y1;
     A1(i) = a1;
     X2(i) = x2;
     Y2(i) = y2;
     A2(i) = a2;
+    
+    % REPLACE PREDICTED WITH ACTUAL VALUE FOR NEXT ITERATION
+    % CURRENT POSITION OF BOB 1
+    x1 = r1 * sin(a1);
+    y1 = r1 * cos(a1);
+    % CURRENT POSITION OF BOB 2
+    x2 = x1 + r2 * sin(a2);
+    y2 = y1 + r2 * cos(a2);
     
     % NEW VALUES FOR BOB 1 AND 2 UDING LINEAR APPROXIMATION
     % NEW ANGULAR VELOCITY UPDATED FOR NEXT ITERATION CALCULATIONS
@@ -87,7 +98,7 @@ end
 plot(X2,-Y2);
 grid on;
 % EXPORT VALUES
-csvwrite('C:\Users\geekSA67\code\CS374_Labs\Project\X2_1000.csv',X2)
-csvwrite('C:\Users\geekSA67\code\CS374_Labs\Project\Y2_1000.csv',Y2) 
+csvwrite('C:\Users\geekSA67\code\CS374_Labs\Project\X100pred.csv',X2)
+csvwrite('C:\Users\geekSA67\code\CS374_Labs\Project\Y100pred.csv',Y2) 
 %csvwrite('C:\Users\geekSA67\code\CS374_Labs\Project\A1.csv',A1) 
   
