@@ -18,7 +18,7 @@ er_rel = ones(1,n);
 approx = ones(1,n);
 for i = 1:n % find n+1 values from 0 to n
     y = exp(1).^(-x).*x.^(i-1);
-    approx(i) =  sum(y*dx);; % returns gaamma(n) = (n-1)!;
+    approx(i) =  sum(y*dx); % returns gaamma(n) = (n-1)!;
     er_abs(i) = gamma(i) - approx(i); 
     er_rel(i) = er_abs(i) / gamma(i);
 end

@@ -1,47 +1,6 @@
 %%
 function z = SIMP(x,y,dim)
 format long;
-%SIMPS  Simpson's numerical integration.
-%   The Simpson's rule for integration uses parabolic arcs instead of the
-%   straight lines used in the trapezoidal rule.
-%
-%   Z = SIMPS(Y) computes an approximation of the integral of Y via the
-%   Simpson's method (with unit spacing). To compute the integral for
-%   spacing different from one, multiply Z by the spacing increment.
-%
-%   For vectors, SIMPS(Y) is the integral of Y. For matrices, SIMPS(Y) is a
-%   row vector with the integral over each column. For N-D arrays, SIMPS(Y)
-%   works across the first non-singleton dimension.
-%
-%   Z = SIMPS(X,Y) computes the integral of Y with respect to X using the
-%   Simpson's rule. X and Y must be vectors of the same length, or X must
-%   be a column vector and Y an array whose first non-singleton dimension
-%   is length(X). SIMPS operates along this dimension.
-%
-%   Z = SIMPS(X,Y,DIM) or SIMPS(Y,DIM) integrates across dimension DIM of
-%   Y. The length of X must be the same as size(Y,DIM).
-%
-%   Examples:
-%   --------
-%   % The integration of sin(x) on [0,pi] is 2
-%   % Let us compare TRAPZ and SIMPS
-%   x = linspace(0,pi,6);
-%   y = sin(x);
-%   trapz(x,y) % returns 1.9338
-%   simps(x,y) % returns 2.0071
-%
-%   If Y = [0 1 2
-%           3 4 5
-%           6 7 8]
-%   then simps(Y,1) is [6 8 10] and simps(Y,2) is [2; 8; 14]
-%
-%   -- Damien Garcia -- 08/2007, revised 11/2009
-%   website: <a
-%   href="matlab:web('http://www.biomecardio.com')">www.BiomeCardio.com</a>
-%
-%   See also CUMSIMPS, TRAPZ, QUAD.
-%   Adapted from TRAPZ
-%--   Make sure x and y are column vectors, or y is a matrix.
 perm = []; nshifts = 0;
 if nargin == 3 % simps(x,y,dim)
   perm = [dim:max(ndims(y),dim) 1:dim-1];
